@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @product = products(:one)
+    @product = products(:ruby)
     @update = {
       title: 'Lorem Ipsum',
       description: 'Wibbles are fun!',
@@ -14,6 +14,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_url
     assert_response :success
+    assert_select 'tbody tr', 3
+    assert_select 'tr td dl dt', 'Programing Ruby 1.9'
   end
 
   test "should get new" do
