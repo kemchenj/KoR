@@ -6,7 +6,7 @@ class CombineItemsInCart < ActiveRecord::Migration[5.1]
       sums = cart.line_items.group(:product_id).sum(:quantity)
 
       sums.each do |product_id, quantity|
-        if quantity > 0
+        if quantity > 1
           # 删除同一个产品的多个商品
           cart.line_items.where(product_id: product_id).delete_all
 
@@ -32,8 +32,5 @@ class CombineItemsInCart < ActiveRecord::Migration[5.1]
 
       line_item.destroy
     end
-  end
-
-  def change
   end
 end
