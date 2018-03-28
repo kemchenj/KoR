@@ -9,3 +9,7 @@ one: {}
 #
 two: {}
 # column: value
+#
+
+with_one_product:
+  id: 1
