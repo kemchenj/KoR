@@ -7,14 +7,14 @@ class CartTest < ActiveSupport::TestCase
 
     cart.add_product(products(:two))
 
-    assert_equal cart.line_items.to_a.count, 2
+    assert_equal cart.line_items.size, 2
   end
 
   test "cart should update existing line item quantity when adding an existing product" do
     cart = carts(:only_ruby)
 
-    cart.add_product(products(:ruby)).save!
+    cart.add_product(products(:ruby))
 
-    assert_equal cart.line_items.to_a.size, 1
+    assert_equal cart.line_items.size, 1
   end
 end
