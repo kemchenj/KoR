@@ -3,11 +3,14 @@
 one:
   product: ruby
   cart: one
+  price: 49.94
 
 two:
   product: two
   cart: two
+  price: 9.99
 
 ruby:
   product: ruby
   cart: only_ruby
+  price: 49.94
