@@ -6,6 +6,9 @@ class Product < ApplicationRecord
   # 数据验证
   validates_presence_of :title, :description, :image_url, :price
   validates_uniqueness_of :title
+  # validates_uniqueness_of :image_url
+  validates :image_url, uniqueness: true
+  
   validates :title, length: { minimum: 10, too_short: 'length was too short' }
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :image_url, allow_blank: true, format: {
