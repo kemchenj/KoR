@@ -43,6 +43,17 @@ class ProductTest < ActiveSupport::TestCase
                  product.errors[:title]
   end
 
+  test "product is not valid without a unique image_url - i18n" do
+    product = Product.new(title: "unique title",
+                          description: "yyy",
+                          price: 1,
+                          image_url: products(:ruby).image_url)
+
+    assert product.invalid?
+    assert_equal [I18n.translate('errors.messages.taken')],
+                  product.errors[:image_url]
+  end
+
   test "image_url" do
     ok = %w{ fred.gif fred.jpg fred.png FRED.GIF FRED.Jpg http://a.b.c/x/y/z/fred.gif }
     bad = %w{ fred.doc fred.gif/more fred.gif.more }
